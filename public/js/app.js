@@ -1,7 +1,7 @@
 $(function() {
 		
-	const domain = "https://crushretailapp.sayantanpc.repl.co";
-	//const domain = window.location.hostname;
+	//const domain = "https://crushretailapp.sayantanpc.repl.co";
+	const domain = window.location.hostname;
 	
 	let prodPage = 0;    //page no.
 	let perPage = 0;  //limit 
