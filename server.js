@@ -30,13 +30,13 @@ app.set('views', './views')
 //app.use(session({ secret: 'wmt1ockbtopsecret' }));
 
 // default route
-app.get('/home', function(req, res) {
+app.get('/', function(req, res) {
     res.set('Content-Type', 'text/html');
     res.sendFile(path.join(__dirname + '/views/home.html'));
 })
 
-// default route
-app.get('/', function(req, res) {
+// test route
+app.get('/test', function(req, res) {
     res.send("K-Crush retail front-end app is up and running !!. User /home to get the homepage");
 })
 
