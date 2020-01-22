@@ -1,42 +1,44 @@
 $(function() {
 		
-	//const domain = "https://crushretailapp.sayantanpc.repl.co";
-	const domain = window.location.hostname;
+	//define the global variables
+  let domain = "";	      //domain of the back-end app
+	let prodPage = 0;       //page no.
+	let perPage = 0;        //limit 
+	let gCat = '';	        //category
+	let prodURLbase = '';   //URL path for products
+	let searchURLbase = ''; //URL path for search
+	let pBarBaseClass = ''; //base css class name of progress bar
 	
-	let prodPage = 0;    //page no.
-	let perPage = 0;  //limit 
-	let gCat = '';	//category
-	let prodURLbase = '';
-	let searchURLbase = '';
-	let pBarBaseClass = '';
-	
-	initApp();
-	
-	$("form").submit(function(e){
-		e.preventDefault();
-	});
-	
-	
+
 	function initApp(){
-		prodPage = 1;	//page number`
-		perPage = 12;  //default number of results per page
-		gCat = 'all';	//default category
-		prodURLbase = domain + "/products/";
-		//searchURLbase = domain + "/search/";
-		searchURLbase = domain + "/searchv2/";
-		
-		pBarBaseClass = "progress-bar";
-		
-		let url = prodURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
-		getCatProducts(url, gCat);
-	}
-	
+    domain = _globalVar.backEndAppDomain;
+    prodPage = _globalVar.prodPage;
+    perPage = _globalVar.perPage;
+    gCat = _globalVar.defaultCategory;
+    prodURLbase = _globalVar.prodURLbase;
+    searchURLbase = _globalVar.searchURLbase;
+    pBarBaseClass = _globalVar.pBarBaseClass;
+
+    let url = domain + prodURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
+    getCatProducts(url, gCat);
+    initPaginate("PRODUCT", $("#cont_pagination"));
+
+    //prevent page submit
+    $("form").submit(function(e){
+      e.preventDefault();
+    });
+
+    //empty the search box
+    $("#in_text_box").val("");
+
+  }
+
 	
 	//alert(JSON.stringify($("body").data().cat_prodlist));	
 	
 	
 	//initialize progress bar in the parent element ref. (el). Also, pass the css class name of the progress bar.
-	function initLoadingProgress(el, pbclass){
+	/*function initLoadingProgress(el, pbclass){
 		
 		let pBarHtml = '<div class="' + pbclass + ' progress-bar-striped progress-bar-animated" style="width:5%"></div>';
 		 el.html(pBarHtml);
@@ -55,6 +57,13 @@ $(function() {
 		
 		el.find("." + pbclass).attr("width", pct + "%");
 	}
+
+
+  //get the loading progress value
+  function getLoadingProgress(el, pbclass){
+    
+    return parseInt(el.find("." + pbclass).attr("width").split("%")[0]);
+  }
 	
 	
 	//hide progres bar. Pass the parent element ref. (el) to locate the progress bar.
@@ -65,7 +74,7 @@ $(function() {
 		
 		clearInterval(intervalId);
 		el.find("." + pbclass).fadeOut();
-	}
+	}*/
 	
 	
 	//fetch the products
@@ -104,8 +113,11 @@ $(function() {
 			});			
 			console.log(catg + ' : ' + len);
 			
-			//***To test this code to stop the 'Pagination' at the end of all the data
-			//To Trigger dataComplete  event, check if the last calculated total count matches with the current total.
+		  //To Trigger dataComplete  event, check if no data is returned
+      if(res.data.length == 0)
+          $("#container_prod_list").trigger($.Event("dataComplete"));
+
+
 			/*if($("#container_prod_list").data().cat_rec_count == len){
 				//alert('all data fetched');
 				$("#container_prod_list").trigger($.Event("dataComplete"));
@@ -253,19 +265,27 @@ $(function() {
 	
 	
 	
-	//pagination start
-	function initPaginate(context){
+	//pagination start. Pass container element ref. and context (e.g. SEARCH, PRODUCT, etc.)
+	function initPaginate(context, el){
 		
 		//reset page counter
 		prodPage = 1; 
+
+    let paginateElId = "btn_paginate_" + context.toLowerCase();
+    let loadHTML = '<button type="button" class="btn btn-outline-primary btn-block" id="' + paginateElId + '"> &nbsp;&nbsp;Load more&nbsp;&nbsp; </button>';
+
+    el.html(loadHTML) //load the pagination button
+      .data("paginateElId", paginateElId);  //store the Element Id of the pagination button
 		
-		$("#btn_paginate").click(function(e){
+		//add the onclick handler
+    $("#" + paginateElId).click(function(e){
 				
 			//add spinner to show data load progress
 			let loadHTML = '<span class="spinner-border spinner-border-sm"></span>';
 			$(this).append(loadHTML);
 			
-			$(this).prop("disabled",true);
+			//disable the button while loading more results is in progress
+      $(this).prop("disabled",true);
 			
 			//let catg = $("#nav_catg").find("li.active").children("a.nav-link").attr("data").toLowerCase();
 			
@@ -275,7 +295,7 @@ $(function() {
 				getCatProducts(url, gCat);				
 			}
 			else {
-				let url = searchURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
+				let url = domain + searchURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
 				getCatProducts(url, gCat);
 			}
 			
@@ -283,29 +303,37 @@ $(function() {
 	}
 	
 	
-	//page load completed
-	function stopPaginate(){
+	//page load completed. Pass the ref. of the pagination container
+	function stopPaginate(el){
+
+    //get the ref. of the paginate Element
+    let pageBtn = $("#" + el.data().paginateElId);
 		
 		//remove the spinner
-		$("#btn_paginate").children("span").remove();
+		pageBtn.children("span").remove();
+
+    let s = pageBtn.attr("display");
+
+    if(s == 'none' || s == false){
+      pageBtn.fadeIn("slow");
+    }
 		
-		$("#btn_paginate")
-			.prop("disabled",false)
-			.addClass("btn btn-outline-primary btn-block")
-			.fadeIn("slow");
+		pageBtn.addClass("btn btn-outline-primary btn-block")
+            .prop("disabled",false);
+
 	}
 	
 	
-	//pagination end
-	function endPaginate(){
+	//pagination end. Pass the ref. of the pagination container
+	function endPaginate(el){
+
+    //get the ref. of the paginate Element
+    let pageBtn = $("#" + el.data().paginateElId);
 		
-		//remove the spinner
-		$("#btn_paginate").children("span").remove();
-		
-		$("#btn_paginate")
-			.prop("disabled",true)
-			.removeClass("btn btn-outline-primary btn-block")
-			.attr("display","none");
+		//remove the pagination element
+		//pageBtn.children("span").remove();
+    pageBtn.remove();
+
 	}
 	
 	
@@ -322,7 +350,7 @@ $(function() {
 			return false;
 		}
 		
-		let url = searchURLbase + encodeURI(q) + `?p=${prodPage}&l=${perPage}`;
+		let url = domain + searchURLbase + encodeURI(q) + `?p=${prodPage}&l=${perPage}`;
 		console.log(url);
 		getCatProducts(url, q);
 		
@@ -350,7 +378,8 @@ $(function() {
 			//trigger category changed event
 			$("#container_prod_list").trigger($.Event("dataCatgChanged"));
 			
-			initPaginate("PRODUCT");
+			endPaginate($("#cont_pagination"));
+      initPaginate("PRODUCT", $("#cont_pagination"));
 			
 			//get the results
 			let url = domain + "/products/" + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
@@ -433,10 +462,15 @@ $(function() {
 				loadCard(el, item);
 			}
 			
-			//showLoadingProgress($("#container_prod_list"), pBarBaseClass, 30);
+      //let v = getLoadingProgress($("#container_prod_list"), pBarBaseClass);
+			//showLoadingProgress($("#container_prod_list"), pBarBaseClass, v + ((100 - v) / prodData.length));
 			
 		});
+
+    //hideLoadingProgess($("#container_prod_list"), pBarBaseClass);
 		
+    //show contents
+    $(this).nextAll().fadeIn();
 		
 		//trigger data displayed event
 		$("#container_prod_list").trigger($.Event("dataDisplayed"));
@@ -449,14 +483,14 @@ $(function() {
 	$("#container_prod_list").on("dataDisplayed", function(e){
 		
 		//$(this).fadeIn();
-		stopPaginate();
+		stopPaginate($("#cont_pagination"));
 	});
 	
 	
 	//action when no more data available to be fetched
 	$("#container_prod_list").on("dataComplete", function(e){
 		
-		endPaginate();
+		endPaginate($("#cont_pagination"));
 	});	
 	
 	
@@ -466,7 +500,7 @@ $(function() {
 		//cleanup the previous results
 		$(this).children("div").remove();
 		
-		endPaginate();
+		endPaginate($("#cont_pagination"));
 		
 	});
 	
@@ -497,8 +531,10 @@ $(function() {
 		//trigger search text changed event
 		$("#container_prod_list").trigger($.Event("dataCatgChanged"));
 		
-		initPaginate("SEARCH");
+		endPaginate($("#cont_pagination"));
+    initPaginate("SEARCH",$("#cont_pagination"));
 		searchProducts();
+    $("#in_text_box").val("");
 		
 	});
 	
@@ -514,9 +550,11 @@ $(function() {
 		
 		//trigger search text changed event
 			$("#container_prod_list").trigger($.Event("dataCatgChanged"));
-			
-		initPaginate("SEARCH");
+
+    endPaginate($("#cont_pagination"));	
+		initPaginate("SEARCH", $("#cont_pagination"));
 		searchProducts();
+    $("#in_text_box").val("");
 			
 	});
 	
@@ -533,6 +571,6 @@ $(function() {
 	});
 	
 	
-		
+	initApp();
 		
 });
