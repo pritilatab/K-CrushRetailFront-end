@@ -292,11 +292,11 @@ $(function() {
 			
 			//load more results
 			if(context == 'SEARCH'){
-				let url = prodURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
+				let url = domain + searchURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
 				getCatProducts(url, gCat);				
 			}
 			else {
-				let url = domain + searchURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
+				let url = domain + prodURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
 				getCatProducts(url, gCat);
 			}
 			
