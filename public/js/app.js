@@ -85,6 +85,8 @@ $(function() {
 		$.when($.getJSON(searchURL, function( res ) {
 			
 			//alert(data);
+			console.log(searchURL);
+			
 			if(res.status == 'undefined' || res.status == 'failed'){
 				//trigger data complete and return
 				$("#container_prod_list").trigger($.Event("dataComplete"));
