@@ -35,6 +35,12 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/views/home.html'));
 })
 
+// alternate route
+app.get('/home', function(req, res) {
+    res.set('Content-Type', 'text/html');
+    res.sendFile(path.join(__dirname + '/views/home.html'));
+})
+
 // test route
 app.get('/test', function(req, res) {
     res.send("K-Crush retail front-end app is up and running !!. User /home to get the homepage");
@@ -52,5 +58,4 @@ app.set('port', process.env.port || port); // set express to use this port
 // set the app to listen on the port
 app.listen(port, () => {
   console.log(`Nodejs Server running on port: ${port}`);
-  console.log(__dirname + '/views');
 });
