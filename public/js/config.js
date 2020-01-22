@@ -6,6 +6,6 @@ _globalVar = {
     "perPage": 12, //limit 
     "defaultCategory": "all", //category
     "prodURLbase": "/products/", //URL path for products
-    "searchURLbase": "/searchv2/", //URL path for search
+    "searchURLbase": "/search/", //URL path for search
     "pBarBaseClass": "progress-bar" //base css class name of progress bar
   };
