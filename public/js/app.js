@@ -20,8 +20,7 @@ $(function() {
     pBarBaseClass = _globalVar.pBarBaseClass;
 
     let url = domain + prodURLbase + encodeURI(gCat) + `?p=${prodPage}&l=${perPage}`;
-		
-	alert(url);
+
     getCatProducts(url, gCat);
     initPaginate("PRODUCT", $("#cont_pagination"));
 
@@ -85,10 +84,7 @@ $(function() {
 		//initLoadingProgress($("#container_prod_list"), pBarBaseClass);
 		
 		$.when($.getJSON(searchURL, function( res ) {
-			
-			alert(searchURL);
-			console.log(searchURL);
-			
+					
 			if(res.status == 'undefined' || res.status == 'failed'){
 				//trigger data complete and return
 				$("#container_prod_list").trigger($.Event("dataComplete"));
