@@ -1,7 +1,7 @@
 //global config
 
 _globalVar = {
-    "backEndAppDomain": "kcrushretailbackend-walmart-team-a.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud",
+    "backEndAppDomain": "http://kcrushretailbackend-walmart-team-a.gamification-d3c0cb24e2b77f6869027abe3de4bca3-0001.sng01.containers.appdomain.cloud",
     "prodPage": 1, //page no.
     "perPage": 12, //limit 
     "defaultCategory": "all", //category
