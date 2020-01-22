@@ -157,40 +157,41 @@ $(function() {
 		let htmlDisPrice = '';
 		let htmlPrice = data.List_Price;
 		
-		if(data.Discount != 0){
+		if(data.Discount != 0 && data.Discount != null){
 			/*htmlDiscount = '<div class="card-img-overlay"><p class="text-md-left"><span class="badge badge-pill badge-danger medium"><span class="badge badge-light">$' + 
 							data.Discount + '</span> off</span></p></div>';*/
-			htmlDiscount = '<div class="card-img-overlay"><p class="text-md-left"><span class="badge badge-pill badge-danger medium">$' + 
-							data.Discount + ' off</span></p></div>';
+			htmlDiscount = '<div class="card-img-overlay"><p class="text-md-left"><span class="badge badge-pill badge-danger medium">' + 
+							data.Discount + '% off</span></p></div>';
 			
-			htmlDisPrice = '&nbsp;' + (data.List_Price - data.Discount);
+			let n = data.List_Price * (data.Discount/100);
+			htmlDisPrice = '&nbsp;' + n.toFixed(2);
 			htmlPrice = '<s>' + data.List_Price + '</s>';
 			
 		}
 		
 		let htmlAttr = '<h6 class="bg-info text-white font-weight-bold"><small>';
 		
-		if(data.SKU_ATTRIBUTE_VALUE1 != null && data.SKU_ATTRIBUTE_VALUE1 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE1 != null && data.SKU_ATTRIBUTE_VALUE1 != "" && data.SKU_ATTRIBUTE_VALUE1 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE1 + '&nbsp;&nbsp;';	
 		}
 		
-		if(data.SKU_ATTRIBUTE_VALUE2 != null && data.SKU_ATTRIBUTE_VALUE2 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE2 != null && data.SKU_ATTRIBUTE_VALUE2 != "" && data.SKU_ATTRIBUTE_VALUE2 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE2 + '&nbsp;&nbsp;';
 		} 
 		
-		if(data.SKU_ATTRIBUTE_VALUE3 != null && data.SKU_ATTRIBUTE_VALUE3 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE3 != null && data.SKU_ATTRIBUTE_VALUE3 != "" && data.SKU_ATTRIBUTE_VALUE3 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE3 + '&nbsp;' + data.SKUAttribute3 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKU_ATTRIBUTE_VALUE4 != null && data.SKU_ATTRIBUTE_VALUE4 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE4 != null && data.SKU_ATTRIBUTE_VALUE4 != "" && data.SKU_ATTRIBUTE_VALUE4 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE4 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKU_ATTRIBUTE_VALUE5 != null && data.SKU_ATTRIBUTE_VALUE5 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE5 != null && data.SKU_ATTRIBUTE_VALUE5 != "" && data.SKU_ATTRIBUTE_VALUE5 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE5 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKU_ATTRIBUTE_VALUE6 != null && data.SKU_ATTRIBUTE_VALUE6 != ""){
+		if(data.SKU_ATTRIBUTE_VALUE6 != null && data.SKU_ATTRIBUTE_VALUE6 != "" && data.SKU_ATTRIBUTE_VALUE6 != undefined){
 			htmlAttr += data.SKU_ATTRIBUTE_VALUE6 + '&nbsp;&nbsp;';
 		}
 		
