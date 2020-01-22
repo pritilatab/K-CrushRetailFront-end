@@ -149,7 +149,7 @@ $(function() {
 		
 		let htmlInStock = '';
 		
-		if (data.InStock.toUpperCase() == 'YES') {
+		if (data.IN_STOCK.toUpperCase() == 'YES') {
 			htmlInStock = '<h6><span class="badge badge-success">In Stock</span></h6>';
 		}
 		
@@ -170,28 +170,28 @@ $(function() {
 		
 		let htmlAttr = '<h6 class="bg-info text-white font-weight-bold"><small>';
 		
-		if(data.SKUAtt_Value1 != null && data.SKUAtt_Value1 != ""){
-			htmlAttr += data.SKUAtt_Value1 + '&nbsp;&nbsp;';	
+		if(data.SKU_ATTRIBUTE_VALUE1 != null && data.SKU_ATTRIBUTE_VALUE1 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE1 + '&nbsp;&nbsp;';	
 		}
 		
-		if(data.SKUAtt_Value2 != null && data.SKUAtt_Value2 != ""){
-			htmlAttr += data.SKUAtt_Value2 + '&nbsp;&nbsp;';
+		if(data.SKU_ATTRIBUTE_VALUE2 != null && data.SKU_ATTRIBUTE_VALUE2 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE2 + '&nbsp;&nbsp;';
 		} 
 		
-		if(data.SKUAtt_Value3 != null && data.SKUAtt_Value3 != ""){
-			htmlAttr += data.SKUAtt_Value3 + '&nbsp;' + data.SKUAttribute3 + '&nbsp;&nbsp;';
+		if(data.SKU_ATTRIBUTE_VALUE3 != null && data.SKU_ATTRIBUTE_VALUE3 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE3 + '&nbsp;' + data.SKUAttribute3 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKUAtt_Value4 != null && data.SKUAtt_Value4 != ""){
-			htmlAttr += data.SKUAtt_Value4 + '&nbsp;&nbsp;';
+		if(data.SKU_ATTRIBUTE_VALUE4 != null && data.SKU_ATTRIBUTE_VALUE4 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE4 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKUAtt_Value5 != null && data.SKUAtt_Value5 != ""){
-			htmlAttr += data.SKUAtt_Value5 + '&nbsp;&nbsp;';
+		if(data.SKU_ATTRIBUTE_VALUE5 != null && data.SKU_ATTRIBUTE_VALUE5 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE5 + '&nbsp;&nbsp;';
 		}
 		
-		if(data.SKUAtt_Value6 != null && data.SKUAtt_Value6 != ""){
-			htmlAttr += data.SKUAtt_Value6 + '&nbsp;&nbsp;';
+		if(data.SKU_ATTRIBUTE_VALUE6 != null && data.SKU_ATTRIBUTE_VALUE6 != ""){
+			htmlAttr += data.SKU_ATTRIBUTE_VALUE6 + '&nbsp;&nbsp;';
 		}
 		
 		htmlAttr += '</small></h6>';
