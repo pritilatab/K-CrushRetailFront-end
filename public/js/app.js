@@ -161,9 +161,9 @@ $(function() {
 			/*htmlDiscount = '<div class="card-img-overlay"><p class="text-md-left"><span class="badge badge-pill badge-danger medium"><span class="badge badge-light">$' + 
 							data.Discount + '</span> off</span></p></div>';*/
 			htmlDiscount = '<div class="card-img-overlay"><p class="text-md-left"><span class="badge badge-pill badge-danger medium">' + 
-							data.Discount + '% off</span></p></div>';
+							(data.Discount * 100) + '% off</span></p></div>';
 			
-			let n = data.List_Price * (data.Discount/100);
+			let n = data.List_Price - (data.List_Price * data.Discount);
 			htmlDisPrice = '&nbsp;' + n.toFixed(2);
 			htmlPrice = '<s>' + data.List_Price + '</s>';
 			
