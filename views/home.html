@@ -32,7 +32,7 @@
     body,
     header,
     .carousel {
-      height: 60vh;
+      height: 40vh;
     }
 
     @media (max-width: 740px) {
@@ -58,14 +58,14 @@
   </style>
 </head>
 
-<body>
+<body class="brown lighten-5" style="background-image: url('img/wbg4.png'); background-repeat: round; background-size: auto; ">
 
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+      <a class="navbar-brand waves-effect" href="javascript:void(0)" target="_blank">
 		<img src="img/logo_small.png" max-width="50" height="30" alt="logo">
       </a>
 
@@ -121,13 +121,13 @@
   <!-- Navbar -->
 
   <!--Carousel Wrapper-->
-  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+  <div id="carousel-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel" data-pause="hover">
 
     <!--Indicators-->
     <ol class="carousel-indicators">
-      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+      <li data-target="#carousel-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-1z" data-slide-to="2"></li>
     </ol>
     <!--/.Indicators-->
 
@@ -139,7 +139,7 @@
         <div class="view" style="background-image: url('img/clothing.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
-          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+          <div class="mask rgba-stylish-light d-flex justify-content-center align-items-center">
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
@@ -152,10 +152,10 @@
               </p>
 
               <p class="mb-4 d-none d-md-block">
-                <strong>Slacks and trousers and shorts, Shirts and blouses, Sweaters, Coats and jackets, Suits, Dresses and skirts and saris and kimonos, Overalls and coveralls, Folkloric clothing, Undergarments, Hosiery, Nightwear, and many more.</strong>
+                <strong>Slacks and trousers and shorts, Shirts and blouses, Sweaters, Coats and jackets, Suits, Dresses and many more.</strong>
               </p>
 
-              <a target="_blank" href="#" class="btn btn-primary btn-lg">View Products
+              <a target="_blank" href="#" class="btn btn-primary btn-md">View Products
                 <i class="fab fa-sistrix ml-2"></i>
               </a>
             </div>
@@ -173,7 +173,7 @@
         <div class="view" style="background-image: url('img/footwear.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
-          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+          <div class="mask rgba-stylish-light d-flex justify-content-center align-items-center">
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
@@ -189,7 +189,7 @@
                 <strong>Boots, Shoes, Slippers, Sandals, Athletic footwear and many more.</strong>
               </p>
 
-              <a target="_blank" href="#" class="btn btn-primary btn-lg">View Products
+              <a target="_blank" href="#" class="btn btn-primary btn-md">View Products
                 <i class="fab fa-sistrix ml-2"></i>
               </a>
             </div>
@@ -207,7 +207,7 @@
         <div class="view" style="background-image: url('img/bag.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
-          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+          <div class="mask rgba-stylish-light d-flex justify-content-center align-items-center">
 
             <!-- Content -->
             <div class="text-center white-text mx-5 wow fadeIn">
@@ -223,7 +223,7 @@
                 <strong>Luggage, Purses and handbags and bags, Business cases, Travel kits and accessories.</strong>
               </p>
 
-              <a target="_blank" href="#" class="btn btn-primary btn-lg">View Products
+              <a target="_blank" href="#" class="btn btn-primary btn-md">View Products
                 <i class="fab fa-sistrix ml-2"></i>
               </a>
             </div>
@@ -240,11 +240,11 @@
     <!--/.Slides-->
 
     <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#carousel-1z" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carousel-1z" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
@@ -374,7 +374,79 @@
   <!--Main layout-->
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+  <footer class="page-footer font-small mt-4 wow fadeIn">
+
+    <!-- Footer Links -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Footer Content</h5>
+        <p>Here you can use rows and columns to organize your footer content.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h6 class="text-uppercase">Links</h6>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 mb-md-0 mb-3">
+
+        <!-- Links -->
+        <h6 class="text-uppercase">Links</h6>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">Link 1</a>
+          </li>
+          <li>
+            <a href="#!">Link 2</a>
+          </li>
+          <li>
+            <a href="#!">Link 3</a>
+          </li>
+          <li>
+            <a href="#!">Link 4</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
 
     <!--Call to action-->
     <!--<div class="pt-4">
@@ -388,10 +460,10 @@
       </a>-->
     <!--/.Call to action-->
 
-    <hr class="my-4">
+    <!--<hr class="my-4">-->
 
     <!-- Social icons -->
-    <div class="pb-4">
+    <!--<div class="pb-4">
       <a href="https://www.facebook.com/mdbootstrap" target="_blank">
         <i class="fab fa-facebook-f mr-3"></i>
       </a>
@@ -423,16 +495,16 @@
       <a href="http://codepen.io/mdbootstrap/" target="_blank">
         <i class="fab fa-codepen mr-3"></i>
       </a>
-    </div>
+    </div>-->
     <!-- Social icons -->
 
     <!--Copyright-->
-    <div class="footer-copyright py-3">
+    <div class="footer-copyright text-center py-3">
       © 2020 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> K-Crush Shoppe </a>
+      <a href="#"> K-Crush Shoppe </a>
 	  &nbsp;&nbsp;&nbsp;&nbsp;
-	  Built on: <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> Openshift Platform </a>
-	  &lt;logo&gt;
+	  Built on: <a href="https://www.openshift.com/" target="_blank"> Openshift Platform </a>
+	  <img src="img/openshift.jpg" class="rounded mx-auto d-inline" max-width="50" height="30" alt="logo">
     </div>
     <!--/.Copyright-->
 
